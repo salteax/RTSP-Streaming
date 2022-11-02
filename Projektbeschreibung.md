@@ -72,32 +72,44 @@ S: RTSP/1.0 200 OK
  : CSeq: 1
  : Public: DESCRIBE, SETUP, TEARDOWN, PLAY, PAUSE
 
-C: SETUP rtsp://idefix/htw.mjpeg RTSP/1.0
+C: DESCRIBE rtsp://idefix/htw.mjpeg RTSP/1.0
  : CSeq: 2
+
+S: RTSP/1.0 200 OK
+ : CSeq: 2
+ : Content-Base: rtsp://idefix/htw.mjpeg
+ : Content-Type: application/sdp
+ : Content-Length: 460
+  
+ : m=video 0 RTP/AVP 96
+   [...]
+
+C: SETUP rtsp://idefix/htw.mjpeg RTSP/1.0
+ : CSeq: 3
  : Transport: RTP/UDP;unicast;client_port=25000-25001
 
 S: RTSP/1.0 200 OK
- : CSeq: 2
+ : CSeq: 3
  : Session: 123456
 
 C: PLAY rtsp://idefix/htw.mjpeg RTSP/1.0
- : CSeq: 3
+ : CSeq: 4
  : Session: 123456
 
 S: RTSP/1.0 200 OK
- : CSeq: 3
+ : CSeq: 4
  : Session: 123456
 
 C: PAUSE rtsp://idefix/htw.mjpeg RTSP/1.0
- : CSeq: 4
+ : CSeq: 5
  : Session: 123456
 
 S: RTSP/1.0 200 OK
- : CSeq: 4
+ : CSeq: 5
  : Session: 123456
 
 C: TEARDOWN rtsp://htw.mjpeg RTSP/1.0
- : CSeq: 5
+ : CSeq: 6
  : Session: 123456
 ```
 
