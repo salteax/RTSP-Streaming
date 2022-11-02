@@ -108,7 +108,7 @@ S: RTSP/1.0 200 OK
  : CSeq: 5
  : Session: 123456
 
-C: TEARDOWN rtsp://htw.mjpeg RTSP/1.0
+C: TEARDOWN rtsp://idefix/htw.mjpeg RTSP/1.0
  : CSeq: 6
  : Session: 123456
 ```
