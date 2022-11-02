@@ -10,8 +10,8 @@ Den Namen des zu klonenden Repositories finden Sie auf der Vorlesungswebsite.
 Die Fakultät Informatik stellt Ihnen (unabhängig vom RZ) ein Homeverzeichnis bereit, welches unter /user/data/i[a,m,w][0,1,2][0-9]/sXXXXX gemountet ist. Auf dieses können Sie im Labor S311 einfach zugreifen.
 
 
-**Hinweis:** Anstatt der manuellen Erstellung des Repositories und der Verknüpfung mit dem Aufgaben-Repository im nächsten Schritt können Sie auch die Fork-Funktionalität von Github nutzen um Ihr eigenes Repository zu erstellen, siehe [Github](https://docs.github.com/en/get-started/quickstart/fork-a-repo).  
-Beachten Sie die dabei Namensgebung aus dem obigen Absatz.
+**Hinweis:** Anstatt der manuellen Erstellung des Repositories und der Verknüpfung mit dem Aufgaben-Repository im nächsten Schritt könnte man auch die Fork-Funktionalität von Github nutzen um das eigenes Repository zu erstellen, siehe [Github](https://docs.github.com/en/get-started/quickstart/fork-a-repo).  Leider funktioniert dieser Ansatz für unseren Beleg nicht, da wir private Repositories benötigen, welche beim einem Fork nicht angeboten werden.
+
 
 ## Eigenes Repository mit Aufgaben-Repository verknüpfen
 Repository lokal klonen  
