@@ -65,7 +65,7 @@ Als ersten Schritt sollte das RTSP-Protokoll in den Handlern der Buttons des Ben
 Bitte beachten Sie, dass der im Praktikum verwendete RTSP-Parser im Client und Server nur eine Untermenge an möglichen Attributen unterstützt. Im Zweifelsfall schauen Sie bitte in die jeweilige Implementierung. 
 Sie können sich an dem folgenden Beispiel orientieren (C-Client, S-Server). je nach Konfiguration Ihres Rechners müssen Sie unter Umständen mit FQDN arbeiten (z.B. idefix.informatik.htw-dresden.de)
 ```
-C: OPTIONS rtsp://idefix/htw.mjpeg RTSP/1.0
+C: OPTIONS * RTSP/1.0
  : CSeq: 1
 
 S: RTSP/1.0 200 OK
@@ -84,9 +84,9 @@ S: RTSP/1.0 200 OK
  : m=video 0 RTP/AVP 96
    [...]
 
-C: SETUP rtsp://idefix/htw.mjpeg RTSP/1.0
+C: SETUP rtsp://idefix/htw.mjpeg/trackID=0 RTSP/1.0
  : CSeq: 3
- : Transport: RTP/UDP;unicast;client_port=25000-25001
+ : Transport: RTP/AVP;unicast;client_port=25000-25001
 
 S: RTSP/1.0 200 OK
  : CSeq: 3
