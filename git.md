@@ -30,10 +30,11 @@ Beispiel: `git remote add myrepo https://github.com/HTWDD-RN/sxxxxx-yyy-beleg`
 Aktualisierung des eigenen entfernten Repositories mit aktuellem Branch  
 `git push myrepo`
 
-Sie müssen statt eines Passwortes ein Token für den Zugriff nutzen, siehe [hier](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
-Besonderheiten für das Labor S311: 
+Sie müssen statt eines Passwortes ein Token für den Zugriff nutzen, siehe [hier](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  
+
+Besonderheiten für das **Labor S311**: 
 * Home des Nutzers im Labor ist nicht das Standardhome
-* für den Zugriff auf Github ist ein Proxy notwendig, [Beispieldatei](.gitconfig), diese muss in das S311-Home
+* für den Zugriff auf Github ist ein Proxy notwendig, [Beispieldatei](gitconfig-besipiel.txt), diese muss in das S311-Home mit dem Namen `.gitconfig`
 * das Repository für den Beleg sollte in das Standardhome, da in dem S311-Home wenig Speicherplatz vorhanden ist
 * das Standardhome finden Sie unter: `/user/datei/im99/s99999`
 
