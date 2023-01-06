@@ -46,7 +46,7 @@ Um nicht die komplette FEC-Funktionalität selbst entwickeln zu müssen, werden 
 
 Die Fehlerkorrektur im FecHandler ist noch zu implementieren. Dazu ist die vorhandene Architektur zu analysieren und die TASK-Abschnitte zu bearbeiten.
 
-Eine Übersicht über die relevanten Datenstrukturen und ein Beispiel ist hier zu finden (FEC-Diagramme)(https://www2.htw-dresden.de/~jvogt/it2/fec-diagramme.html)
+Eine Übersicht über die relevanten Datenstrukturen und ein Beispiel ist hier zu finden [FEC-Diagramme](https://www2.htw-dresden.de/~jvogt/it2/fec-diagramme.html)
 
 
 #### Architektur der Paketverarbeitung
