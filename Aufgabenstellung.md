@@ -127,6 +127,23 @@ Beschreiben Sie die Architektur Ihrer Implementierung anhand sinnvoller Software
 Manchen Sie konkrete Vorschläge zur Verbesserungen des Belegs.
 
 
+## Lernaspekte
+* Kommunikationsprotokolle
+  * Internetprotokolle, RFCs
+* Programmierung
+  * JAVA-Programmierung
+  * Debugging
+* Softwarearchitektur
+  * Entwurfsmuster, FSM
+* Mathematik/Stochastik
+  * Fehleranalyse
+* Grundlagen der Informatik
+  * Datenformate
+  * Serialisierung
+* Betriebssysteme
+  * Shellscripte
+  * Plattformunabhängigkeit
+
 
 ## Literatur
 * Real Time Streaming Protocol (RTSP)                   [RFC 2326](http://www.ietf.org/rfc/rfc2326.txt)
