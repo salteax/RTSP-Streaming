@@ -3,7 +3,7 @@ Die Aufgaben beziehen sich auf den Beleg Videostreaming für das Modul Internett
 
 ## Aufgaben
 ### 1. RTSP-Protokoll: Client-Methoden
-Die gesammte RTSP-Funktionalität für Client und Server befindet sich in der abstakten Klasse RtspDemo und der von Ihnen abzuleitenden Klasse Rtsp.
+Die gesamte RTSP-Funktionalität für Client und Server befindet sich in der abstakten Klasse RtspDemo und der von Ihnen abzuleitenden Klasse Rtsp.
 Programmieren Sie die Klasse Rtsp entsprechend der in der Projektbeschreibung und den Kommentaren im Quelltext der abstrakten Klasse RtspDemo gegebenen Hinweisen.
 
 Wenn Sie zunächst die "leeren" Klassen RTPpacket und FECHandler aus den abstrakten Klassen RTPpacketDemo und FECHandlerDemo erstellen, sollte das Projekt kompilierbar und ausführbar sein und Sie können die RTSP-Funktionalität testen. Dazu müssen Sie die Konsolenausgaben inspizieren.
