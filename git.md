@@ -36,7 +36,7 @@ Besonderheiten für das **Labor S311**:
 * Home des Nutzers im Labor ist nicht das Standardhome
 * für den Zugriff auf Github ist ein Proxy notwendig, [Beispieldatei](gitconfig-beispiel.txt), diese muss in das S311-Home mit dem Namen `.gitconfig`
 * das Repository für den Beleg sollte in das Standardhome, da in dem S311-Home wenig Speicherplatz vorhanden ist
-* das Standardhome finden Sie unter: `/user/datei/im99/s99999`
+* das Standardhome finden Sie unter: `/user/data/im99/s99999`
 
 ## Arbeiten im eigenen Branch
 Oft ist es sinnvoll, nicht im master-Branch zu arbeiten, sondern in einem eigenen Branch.
