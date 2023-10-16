@@ -22,11 +22,11 @@ public class Server extends JFrame implements ActionListener, ChangeListener {
   DatagramSocket RTPsocket; // socket to be used to send and receive UDP packets
   DatagramPacket senddp; // UDP packet containing the video frames
   InetAddress ClientIPAddr; // Client IP address
-  final static int startGroupSize = 2;
+  static int startGroupSize = 2;
   RtpHandler rtpHandler;
   Rtsp rtsp = null;
   // Channel errors
-  private double lossRate = 0.0;
+  static private double lossRate = 0.0;
   Random random = new Random(123456); // fixed seed for debugging
   int dropCounter; // Nr. of dropped media packets
 
@@ -94,7 +94,7 @@ public class Server extends JFrame implements ActionListener, ChangeListener {
     JPanel mainPanel = new JPanel();
     mainPanel.setLayout(new GridBagLayout());
     GridBagConstraints gbc = new GridBagConstraints();
-    JSlider dropRate = new JSlider(JSlider.HORIZONTAL, 0, 100, 0);
+    JSlider dropRate = new JSlider(JSlider.HORIZONTAL, 0, 100, (int) (lossRate * 100));
     dropRate.addChangeListener(this);
     dropRate.setMajorTickSpacing(10);
     dropRate.setMinorTickSpacing(5);
@@ -205,6 +205,11 @@ public class Server extends JFrame implements ActionListener, ChangeListener {
     logger.setLevel(Level.CONFIG);
     //logger.setLevel(Level.ALL);
 
+    if (argv.length > 1) {
+      lossRate = Double.parseDouble(argv[1]);
+      startGroupSize = Integer.parseInt(argv[2]);
+    }
+
     // create a Server object
     Server theServer = new Server();
     theServer.setSize(500, 200);
@@ -212,6 +217,7 @@ public class Server extends JFrame implements ActionListener, ChangeListener {
 
     // get RTSP socket port from the command line
     int RTSPport = Integer.parseInt(argv[0]);
+
 
     // Initiate TCP connection with the client for the RTSP session
     ServerSocket listenSocket = new ServerSocket(RTSPport);
