@@ -11,7 +11,7 @@ public class Rtsp extends RtspDemo {
         }
 
         RTSPSeqNb++;
-        send_RTSP_request("Play");
+        send_RTSP_request("PLAY");
 
         // Wait for the response
         logger.log(Level.INFO, "Wait for response...");
@@ -27,18 +27,46 @@ public class Rtsp extends RtspDemo {
 
     @Override
     boolean pause() {
-        // Implement the logic for the PAUSE method
-        // Update the RTSP state and send the PAUSE request
-        // Handle the server response
-        return false; // Modify as needed
+        if(state != State.PLAYING) {
+            logger.log(Level.WARNING, "RTSP state: " + state);
+            return false;
+        }
+
+        RTSPSeqNb++;
+        send_RTSP_request("PAUSE");
+
+        // Wait for the response
+        logger.log(Level.INFO, "Wait for response...");
+        if (parse_server_response() != 200) {
+            logger.log(Level.WARNING, "Invalid Server Response");
+            return false;
+        } else {
+            state = State.READY;
+            logger.log(Level.INFO, "New RTSP state: READY\n");
+            return true;
+        }
     }
 
     @Override
     boolean teardown() {
-        // Implement the logic for the TEARDOWN method
-        // Update the RTSP state and send the TEARDOWN request
-        // Handle the server response
-        return false; // Modify as needed
+        if(state != State.PLAYING) {
+            logger.log(Level.WARNING, "RTSP state: " + state);
+            return false;
+        }
+
+        RTSPSeqNb++;
+        send_RTSP_request("TEARDOWN");
+
+        // Wait for the response
+        logger.log(Level.INFO, "Wait for response...");
+        if (parse_server_response() != 200) {
+            logger.log(Level.WARNING, "Invalid Server Response");
+            return false;
+        } else {
+            state = State.INIT;
+            logger.log(Level.INFO, "New RTSP state: INIT\n");
+            return true;
+        }
     }
 
     @Override
