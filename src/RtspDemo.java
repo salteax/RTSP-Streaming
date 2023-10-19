@@ -78,8 +78,10 @@ abstract class RtspDemo {
       logger.log(Level.WARNING, "RTSP state: " + state);
       return false;
     }
+
     RTSPSeqNb++;
     send_RTSP_request("SETUP");
+    
     // Wait for the response
     logger.log(Level.INFO, "Wait for response...");
     if (parse_server_response() != 200) {
