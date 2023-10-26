@@ -1,6 +1,19 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Rtsp extends RtspDemo {
+    int rtpRcvPort;
+
     public Rtsp(BufferedReader RTSPBufferedReader, BufferedWriter RTSPBufferedWriter, int rtpRcvPort, String rtspUrl, String videoFileName) {
         super(RTSPBufferedReader, RTSPBufferedWriter, rtpRcvPort, rtspUrl, videoFileName);
+        this.rtpRcvPort = rtpRcvPort;
+    }
+
+    public Rtsp(BufferedReader RTSPBufferedReader, BufferedWriter RTSPBufferedWriter) {
+        super(RTSPBufferedReader, RTSPBufferedWriter);
     }
 
     @Override
@@ -114,5 +127,15 @@ public class Rtsp extends RtspDemo {
         }
         
     }
+
+    @Override
+    String getOptions() {
+        return "";
+    };
+
+    @Override
+    String getDescribe(VideoMetadata meta, int RTP_dest_port) {
+        return "";
+    };
 
 }
