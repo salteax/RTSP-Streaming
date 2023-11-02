@@ -72,6 +72,7 @@ public class Rtsp extends RtspDemo {
 
         // Wait for the response
         logger.log(Level.INFO, "Wait for response...");
+
         if (parse_server_response() != 200) {
             logger.log(Level.WARNING, "Invalid Server Response");
             return false;
@@ -84,14 +85,41 @@ public class Rtsp extends RtspDemo {
 
     @Override
     void describe() {
-        // Implement the logic for the DESCRIBE method
-        // Send the DESCRIBE request and parse the server response
+        if (state != State.INIT) {
+            logger.log(Level.WARNING, "RTSP state: " + state);
+            return;
+        }
+
+        RTSPSeqNb++;
+        send_RTSP_request("DESCRIBE");
+
+        // Wait for the response
+        logger.log(Level.INFO, "Wait for response...");
+
+        if (parse_server_response() != 200) {
+            logger.log(Level.WARNING, "Invalid Server Response");
+        } /*else {
+            state = State.READY;
+            logger.log(Level.INFO, "New RTSP state: READY\n");
+        }*/
     }
 
     @Override
     void options() {
-        // Implement the logic for the OPTIONS method
-        // Send the OPTIONS request and parse the server response
+        if (state != State.INIT) {
+            logger.log(Level.WARNING, "RTSP state: " + state);
+            return;
+        }
+
+        RTSPSeqNb++;
+        send_RTSP_request("OPTIONS");
+
+        if (parse_server_response() != 200) {
+            logger.log(Level.WARNING, "Invalid Server Response");
+        } /*else {
+            state = State.READY;
+            logger.log(Level.INFO, "New RTSP state: READY\n");
+        }*/
     }
 
     @Override
