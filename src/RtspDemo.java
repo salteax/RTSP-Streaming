@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ListIterator;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
@@ -22,7 +24,7 @@ abstract class RtspDemo {
   int RTP_RCV_PORT;
   BufferedWriter RTSPBufferedWriter;  // TCP-Stream for RTSP-Requests
   BufferedReader RTSPBufferedReader; // TCP-Stream for RTSP-Responses
-  int RTSPSeqNb = 1;  // Init
+  int RTSPSeqNb = 0;  // Init
   String RTSPid = "0"; // ID of the RTSP session (given by the RTSP Server)
 
   public int getFramerate() {
@@ -36,6 +38,7 @@ abstract class RtspDemo {
   enum State {INIT, READY, PLAYING}
   State state;
   static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+  long sessionStartTime;
 
 
   /*  *********************** Server   **************************** */
@@ -79,6 +82,8 @@ abstract class RtspDemo {
       logger.log(Level.WARNING, "RTSP state: " + state);
       return false;
     }
+
+    sessionStartTime = System.currentTimeMillis();
 
     RTSPSeqNb++;
     send_RTSP_request("SETUP");
@@ -162,7 +167,7 @@ abstract class RtspDemo {
 
           case "content-type:":
             String ct = headerField.nextToken();
-            logger.log(Level.INFO, "Content-Type: " + ct);
+            //logger.log(Level.INFO, "Content-Type: " + ct);
             break;
 
           case "transport:":
@@ -204,7 +209,7 @@ abstract class RtspDemo {
       if (sbuf[i].contains("framerate")) {
         String sfr = sbuf[i].split(":")[1];
         framerate = Integer.parseInt(sfr);
-        logger.log(Level.INFO, "framerate: " + framerate);
+        //logger.log(Level.INFO, "framerate: " + framerate);
       } else if (sbuf[i].contains("range:npt")) {
         String[] sdur = sbuf[i].split("-");
         if (sdur.length > 1) {
@@ -383,8 +388,4 @@ abstract class RtspDemo {
       System.exit(0);
     }
   }
-
-
-
-
 }
