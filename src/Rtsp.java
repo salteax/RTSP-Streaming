@@ -131,11 +131,11 @@ public class Rtsp extends RtspDemo {
                 rtsp = rtsp + "/trackID=0";
             }
 
-            String rtspReq = request_type + " " + rtsp + "RTSP/1.0" + CRLF;
-            rtspReq += "CSeq:" + RTSPSeqNb + CRLF;
+            String rtspReq = request_type + " " + rtsp + " RTSP/1.0" + CRLF;
+            rtspReq += "CSeq: " + RTSPSeqNb + CRLF;
 
             if(request_type.equals("SETUP")) {
-                rtspReq += "Transport: RTP/AVP;unicast;client_port=" + rtpRcvPort + "-" + rtpRcvPort + CRLF;
+                rtspReq += "Transport: RTP/AVP;unicast;client_port=" + rtpRcvPort + "-" + rtpRcvPort+1 + CRLF;
             }
 
             if(!RTSPid.equals("0")) {
@@ -158,11 +158,13 @@ public class Rtsp extends RtspDemo {
 
     @Override
     String getOptions() {
+
         return "";
     };
 
     @Override
     String getDescribe(VideoMetadata meta, int RTP_dest_port) {
+        System.out.println("Test");
         return "";
     };
 
