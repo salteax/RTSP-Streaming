@@ -12,19 +12,31 @@ public class FecHandler extends FecHandlerDemo {
 
     @Override
     boolean checkCorrection(int nr, HashMap<Integer, RTPpacket> mediaPackets) {
-        // Implement your logic to check if correction is possible
-        return false; // Replace with your logic
+        if(fecStack.get(fecNr.get(nr)) == null || fecList.get(nr) == null) {
+            return false;
+        }
+
+        int c = 0;
+        for(Integer i : fecList.get(nr)) {
+            if(mediaPackets.get(i) == null) {
+                c++;
+            }
+        }
+
+        return c <= 1;
     }
 
     @Override
     RTPpacket correctRtp(int nr, HashMap<Integer, RTPpacket> mediaPackets) {
-        // Implement your logic to correct RTP packet
-        return null; // Replace with your logic
-    }
+        FECpacket fecPacket = fecStack.get(fecNr.get(nr));
 
-    /*public static void main(String[] args) {
-        // Example usage of the FECHandler class
-        FECHandler fecHandler = new FECHandler(48);
-        // Add your code to use the FECHandler class as needed.
-    }*/
+        for(Integer i : fecList.get(nr)) {
+            if(i == nr) {
+                continue;
+            }
+            fecPacket.addRtp(mediaPackets.get(i));
+        }
+
+        return fecPacket.getLostRtp(nr);
+    }
 }
