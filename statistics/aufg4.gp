@@ -1,21 +1,36 @@
-# data.dat
-# Kanalverlust Wahrscheinlichkeit
-0.01 0.0199
-0.02 0.0396
-0.03 0.0589
-0.04 0.0776
-0.05 0.0956
-# Füge weitere Zeilen hinzu, wenn nötig
+#!/usr/local/bin/gnuplot --persist
 
-# Gnuplot Skript
-set terminal pngcairo enhanced font 'arial,10' size 800, 600
-set output 'verlustwahrscheinlichkeit.png'
+THIRD=ARG3
+print "script name        : ", ARG0
+print "first argument     : ", ARG1
+print "third argument     : ", THIRD 
+print "number of arguments: ", ARGC 
 
-set title 'Verlustwahrscheinlichkeit eines Bildes in Abhängigkeit von der Kanalverlustrate'
-set xlabel 'Kanalverlustrate'
-set ylabel 'Verlustwahrscheinlichkeit'
+ARG1="result.txt"
 
-plot 'data.dat' using 1:2 with linespoints title 'n=2', \
-     'data.dat' using 1:(1-(1-$1)**5) with linespoints title 'n=5'
+set title "Ausfallstellenkorrektur mittels Parity-Check-Codes"
+#set key title "Parameter"
+set xlabel "P_e (Kanal)"
+set ylabel "P_e (Bild)"
+set grid
+set key right bottom
+#
+# Dummy, korrekte Formel muss ermittelt werden
+f(x,a)=1-(1-x)**a
+g(x,a)=(1-((1-a)**(x+1) + ((int(x+1))!/(1*(int(x)!))) * a * (1-a)**x))*(a/(x-1))
+set xrange [0:1]
+set yrange [0:1]
+#plot ARG1 with line linewidth 3 title ARG2
 
-set output
+#plot ARG1 with line linewidth 3 title "1 Frame/B."
+plot f(x,2) lw 2 title "2 Frame/B."
+replot f(x,5) lw 2 title "5 Frame/B."
+# FEC
+#replot ARG1 using 1:3  w l  lw 3  title "PCC k=  2"
+#replot ARG1 using 1:4  w l  lw 3  title "PCC k=  3"
+#replot ARG1 using 1:5  w l  lw 3  title "PCC k=  6"
+#replot ARG1 using 1:6  w l  lw 3  title "PCC k=12"
+#replot ARG1 using 1:7  w l  lw 3  title "PCC k=24"
+#replot ARG1 using 1:8  w l  lw 3  title "PCC k=48"
+# notitle
+pause -1
