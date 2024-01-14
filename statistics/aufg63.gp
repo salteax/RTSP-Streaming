@@ -16,7 +16,7 @@ set grid
 set key right bottom
 #
 # Dummy, korrekte Formel muss ermittelt werden
-f(x,a)=a*0.01+x
+f(x,a)=1-(1-x)**aa
 g(x,a)= (1-((1-a)**(x+1) + ((int(x+1))!/(1*(int(x)!))) * a * (1-a)**x))*(a/(x-1))
 set xrange [0:1]
 set yrange [0:1]
@@ -25,13 +25,13 @@ set yrange [0:1]
 #plot ARG1 with line linewidth 3 title "1 Frame/B."
 #replot f(x,2) lw 2 title "2 Frame/B."
 #replot f(x,5) lw 2 title "5 Frame/B."
-plot g(2, x) lw 2 title "1 RTP/ Bild"
+#plot g(2, x) lw 2 title "1 RTP/ Bild"
 # FEC
-#replot ARG1 using 1:3  w l  lw 3  title "PCC k=  2"
-#replot ARG1 using 1:4  w l  lw 3  title "PCC k=  3"
-#replot ARG1 using 1:5  w l  lw 3  title "PCC k=  6"
-#replot ARG1 using 1:6  w l  lw 3  title "PCC k=12"
-#replot ARG1 using 1:7  w l  lw 3  title "PCC k=24"
-#replot ARG1 using 1:8  w l  lw 3  title "PCC k=48"
+plot ARG1 using 1:3  w l  lw 3  title "PCC k=  2"
+replot ARG1 using 1:4  w l  lw 3  title "PCC k=  3"
+replot ARG1 using 1:5  w l  lw 3  title "PCC k=  6"
+replot ARG1 using 1:6  w l  lw 3  title "PCC k=12"
+replot ARG1 using 1:7  w l  lw 3  title "PCC k=24"
+replot ARG1 using 1:8  w l  lw 3  title "PCC k=48"
 # notitle
 pause -1
